@@ -11,18 +11,6 @@ app.use( express.json());
 mongoose.connect(process.env.DB_connection, ()=>{ console.log('connected to DB')})
 
 
-// var MongoClient = require('mongodb').MongoClient;
-// var url = "mongodb+srv://girishscript:girishscript@sandbox.znzdm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-
-// MongoClient.connect(url, function(err, db) {
-//   if (err) throw err;
-//   var dbo = db.db("integer");
-//   dbo.collection("hospital_pricemaster").find({}).limit(1).toArray(function(err, result) {
-//     if (err) throw err;
-//     console.log(result);
-//     db.close();
-//   });
-// }); 
 
 
 
