@@ -11,13 +11,14 @@ app.use( express.json());
 mongoose.connect(process.env.DB_connection, ()=>{ console.log('connected to DB')})
 
 
-
+const private_get = require('./routers/jwtSessionsroute');
+app.use('/private', private_get);
 
 
 //Middleware
 // app.use('/users', users)
 
-app.use('/post_user', create_user)
+app.use('/post_user', create_user);
 
 
 // mongoose.connection.close()
