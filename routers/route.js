@@ -60,7 +60,7 @@ rout.get('/:id' , async (req, res) =>{
         res.send(sub)
     }
     catch(err) {
-        res.json({message:err.message});
+        res.send({message:err.message});
     }
     // res.send('received');
 });
