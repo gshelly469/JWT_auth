@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv/config');
 
+const port=5000
+
 // const users = require('./routers/get_user');
 const create_user = require('./routers/route')
 
@@ -24,4 +26,4 @@ app.use('/post_user', create_user);
 // mongoose.connection.close()
 
 //LISTENING PORT
-app.listen(3000);
+app.listen(process.env.PORT || port, ()=>{console.log('successfully deployed')});
