@@ -52,7 +52,7 @@ rout.post('/login', async (req, res) =>{
    
 })
 
-rout.get('/:id' , async (req, res) =>{
+rout.get('/' , async (req, res) =>{
     // res.send('POST USERS')
     console.log('HI', req.id);
     try{
