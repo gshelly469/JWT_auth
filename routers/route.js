@@ -5,6 +5,7 @@ const enc = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv/config');
 const Sub = require('../Model/post_schema');
+const mongodb = require('mongodb');
 // require('dotenv/config')
 
 
@@ -64,6 +65,36 @@ rout.get('/' , async (req, res) =>{
     }
     // res.send('received');
 });
+
+// below route will always create a new connection string every time api is called 
+rout.get('/test', async (req, res)=>{
+    console.log('in the test route');
+    const MongoClient = require("mongodb").MongoClient;
+    const url = 'mongodb+srv://girishscript:girishscript@sandbox.znzdm.mongodb.net/school?retryWrites=true&w=majority';
+    // const client = new mongodb.MongoClient('mongodb+srv://girishscript:girishscript@sandbox.znzdm.mongodb.net/school?retryWrites=true&w=majority');
+    // mongo.connect(url, (err, client) => {
+    // if (err) {
+    //     console.log('in the error of test');
+    //     console.error(err);
+    //     return;
+    // }
+    // console.log('Connected successfully to server');
+    // const db = client.db('school');
+    // })
+    const mongo = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
+    await mongo.connect(err => {
+        console.log("MongoDB connected for Beyblade.js");
+        const db = mongo.db('school');
+        const collection = db.collection('alldata');
+        const data_pm = collection.find({"Pkg UOM":"Numbers"}).toArray((error, items) => {
+        console.log(items);
+        // return res.send(data_pm);
+        })
+    });
+    return res.send("some problem");
+   
+        // getData(collection, req, res)
+})
 
 
 // mongoose.connection.close();
